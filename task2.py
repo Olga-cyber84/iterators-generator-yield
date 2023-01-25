@@ -2,10 +2,16 @@ import types
 
 
 def flat_generator(list_of_lists):
-
-    ...
-    yield
-    ...
+    outer_cursor = 0
+    inner_cursor = 0
+    while outer_cursor < len(list_of_lists):
+        inner_list_len = len(list_of_lists[outer_cursor])
+        if inner_list_len > inner_cursor:
+            yield list_of_lists[outer_cursor][inner_cursor]
+            inner_cursor += 1
+        else:
+            outer_cursor += 1
+            inner_cursor = 0
 
 
 def test_2():

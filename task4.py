@@ -2,9 +2,12 @@ import types
 
 
 def flat_generator(list_of_list):
-    ...
-    yield
-    ...
+    if isinstance(list_of_list, list):
+        for outer_item in list_of_list:
+            for inner_item in flat_generator(outer_item):
+                yield inner_item
+    else:
+        yield list_of_list
 
 
 def test_4():
